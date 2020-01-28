@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cfa696ab-bdaa-491e-b949-a4369318d688" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1X22trN45eyr5mAUCPve9Q4JN7m" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunManager">
+    <configuration name="MainClassTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MainClassTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cfa696ab-bdaa-491e-b949-a4369318d688" name="Default Changelist" comment="" />
+      <created>1580230086694</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580230086694</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3723" y="-315" key="#MainTest" timestamp="1580235760818">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state x="3723" y="-315" key="#MainTest/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580235760818" />
+    <state x="3580" y="-327" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580235827743">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state x="3580" y="-327" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580235827743" />
+    <state x="3856" y="-235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580234129556">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state x="3856" y="-235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580234129556" />
+    <state x="3906" y="-227" key="FileChooserDialogImpl" timestamp="1580237019369">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state x="3906" y="-227" key="FileChooserDialogImpl/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580237019369" />
+    <state width="1637" height="179" key="GridCell.Tab.0.bottom" timestamp="1580236385791">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580236385791" />
+    <state width="1637" height="179" key="GridCell.Tab.0.center" timestamp="1580236385791">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="179" key="GridCell.Tab.0.center/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580236385791" />
+    <state width="1637" height="179" key="GridCell.Tab.0.left" timestamp="1580236385791">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="179" key="GridCell.Tab.0.left/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580236385791" />
+    <state width="1637" height="179" key="GridCell.Tab.0.right" timestamp="1580236385791">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="179" key="GridCell.Tab.0.right/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580236385791" />
+    <state x="3627" y="-339" key="SettingsEditor" timestamp="1580237020537">
+      <screen x="3286" y="-487" width="1680" height="1010" />
+    </state>
+    <state x="3627" y="-339" key="SettingsEditor/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@3286.-487.1680.1010" timestamp="1580237020537" />
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1580230093525">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@0.0.1366.728" timestamp="1580230093525" />
+    <state x="387" y="258" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1580230190596">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="387" y="258" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728/3286.-487.1680.1010/1366.-472.1920.1040@0.0.1366.728" timestamp="1580230190596" />
+  </component>
+</project>
