@@ -1,15 +1,22 @@
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.Arrays;
 
 public class MainClassTest extends MainClass
 {
 
     @Test
-    public void testGetClassNumber() {
-        int expected = 45;
-        int actual = this.getClassNumber();
+    public void testGetClassString() {
+        String [] expected = {"Hello","hello"};
+        int actualLength = 0;
+        String parentString = this.getClassString();
 
-        Assert.assertTrue("func getClassNumber return " + actual + ", that  not > then " + expected,actual > expected);
+        for (String s : expected) {
+            if (parentString.contains(s)) {
+                actualLength++;
+            }
+        }
+        Assert.assertTrue("func getClassString return \"" + parentString + "\", that  not contains all of: " + Arrays.toString(expected), actualLength != 0);
     }
 
 }
