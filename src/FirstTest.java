@@ -162,6 +162,39 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void testSearchResultsContainsSearchInput()
+    {
+        String searchInput = "Java";
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find Search Wikipedia input"
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                searchInput,
+                "Cannot find search input"
+        );
+
+        List<WebElement> Results = waitForElementPresent(
+                By.id("org.wikipedia:id/search_results_list"),
+                "Cannot find search results"
+            ).findElements(
+                By.id("org.wikipedia:id/page_list_item_title")
+        );
+
+        for (int i=0; i<Results.size(); i++) {
+            String title = Results.get(i).getAttribute("text");
+            Assert.assertTrue(
+                    "Search result №" + ++i + " didn't contains '" + searchInput + "'",
+                    title.contains(searchInput)
+            );
+        }
+
+    }
+
     private  WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
