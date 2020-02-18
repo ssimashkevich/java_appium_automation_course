@@ -45,7 +45,8 @@ public class FirstTest {
         );
 
         waitForElementAndSendKeys(
-                By.xpath("//*[contains(@text, 'Search…')]"),
+                By.id("org.wikipedia:id/search_src_text"),
+                "Search…",
                 "Java",
                 "Cannot find search input"
         );
@@ -154,6 +155,20 @@ public class FirstTest {
     private WebElement waitForElementAndSendKeys(By by, String value, String error_message, long timeoutInSeconds)
     {
         WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
+        element.sendKeys(value);
+        return element;
+    }
+
+    private WebElement waitForElementAndSendKeys(By by, String element_expected_preset_text, String value, String error_message)
+    {
+        WebElement element = waitForElementPresent(by, error_message);
+        String element_preset_text = element.getAttribute("text");
+
+        Assert.assertEquals(
+                "We see unexpected element preset text before type in it new value",
+                element_expected_preset_text,
+                element_preset_text
+        );
         element.sendKeys(value);
         return element;
     }
