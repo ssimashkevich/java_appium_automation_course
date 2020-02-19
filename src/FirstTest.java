@@ -468,6 +468,152 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void saveTwoArticlesToMyListAndDeleteOne ()
+    {
+        String main_screen_search_input_locator = "org.wikipedia:id/search_container";
+        String search_screen_search_input_locator = "org.wikipedia:id/search_src_text";
+        String search_line = "Java";
+        String first_article_title = "Java (programming language)";
+        String second_article_title = "Java";
+        String first_search_result_locator = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='" + first_article_title + "']";
+        String second_search_result_locator = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='" + second_article_title + "']";
+        String article_options_locator = "//android.widget.ImageView[@content-desc='More options']";
+        String add_to_reading_list_locator = "//*[@text='Add to reading list']";
+        String close_article_locator = "//android.widget.ImageButton[@content-desc='Navigate up']";
+        String name_of_favorites_folder = "Learning programming";
+
+        waitForElementAndClick(
+                By.id(main_screen_search_input_locator),
+                "Cannot find Search Wikipedia input"
+        );
+
+        waitForElementAndSendKeys(
+                By.id(search_screen_search_input_locator),
+                search_line,
+                "Cannot find search input"
+        );
+
+        waitForElementAndClick(
+                By.xpath(first_search_result_locator),
+                "Cannot find '" + first_article_title + "' topic searching by '" + search_line + "'",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath(article_options_locator),
+                "Cannot find button to open article options",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath(add_to_reading_list_locator),
+                "Cannot find option to add article to reading list"
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/onboarding_button"),
+                "Cannot find 'Got it' tip overlay"
+        );
+
+        waitForElementAndClear(
+                By.id("org.wikipedia:id/text_input"),
+                "Cannot input to set name of articles folder"
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/text_input"),
+                name_of_favorites_folder,
+                "Cannot put text into articles folder input"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='OK']"),
+                "Cannot press OK button"
+        );
+
+        waitForElementAndClick(
+                By.xpath(close_article_locator),
+                "Cannot close article, cannot find X link"
+        );
+
+        waitForElementAndClick(
+                By.id(main_screen_search_input_locator),
+                "Cannot find Search Wikipedia input"
+        );
+
+        waitForElementAndSendKeys(
+                By.id(search_screen_search_input_locator),
+                search_line,
+                "Cannot find search input"
+        );
+
+        waitForElementAndClick(
+                By.xpath(second_search_result_locator),
+                "Cannot find '" + second_article_title + "' topic searching by '" + search_line + "'",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath(article_options_locator),
+                "Cannot find button to open article options",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath(add_to_reading_list_locator),
+                "Cannot find option to add article to reading list"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='" + name_of_favorites_folder + "']"),
+                "Cannot find created folder for saving second article"
+        );
+
+        waitForElementAndClick(
+                By.xpath(close_article_locator),
+                "Cannot close article, cannot find X link"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                "Cannot find navigation button to My lists"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='" + name_of_favorites_folder + "']"),
+                "Cannot find created folder for open"
+        );
+
+        swipeElementToLeft(
+                By.xpath("//*[@text='" + first_article_title + "']"),
+                "Cannot find saved article"
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@text='" + second_article_title + "']"),
+                "Second article not present"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='" + second_article_title + "']"),
+                "Second article not present"
+        );
+
+        String second_article_title_after_open = waitForElementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find article title",
+                15
+        );
+
+        Assert.assertEquals(
+                "Article title on favorites page didn't match with title on article page",
+                second_article_title,
+                second_article_title_after_open
+        );
+    }
+
     private  WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
