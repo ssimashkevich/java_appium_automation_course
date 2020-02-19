@@ -614,6 +614,38 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void assertTitle ()
+    {
+        String main_screen_search_input_locator = "org.wikipedia:id/search_container";
+        String search_screen_search_input_locator = "org.wikipedia:id/search_src_text";
+        String search_line = "Java";
+        String article_title = "Java (programming language)";
+        String search_result_locator = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='" + article_title + "']";
+
+        waitForElementAndClick(
+                By.id(main_screen_search_input_locator),
+                "Cannot find Search Wikipedia input"
+        );
+
+        waitForElementAndSendKeys(
+                By.id(search_screen_search_input_locator),
+                search_line,
+                "Cannot find search input"
+        );
+
+        waitForElementAndClick(
+                By.xpath(search_result_locator),
+                "Cannot find '" + article_title + "' topic searching by '" + search_line + "'",
+                15
+        );
+
+        assertElementPresent(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Cannot find article title"
+        );
+    }
+
     private  WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -769,5 +801,14 @@ public class FirstTest {
     {
         WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
         return  element.getAttribute(attribute);
+    }
+
+    private void assertElementPresent(By by, String error_message)
+    {
+        int amount_of_elements = getAmountOfElements(by);
+        if (amount_of_elements == 0){
+            String default_massage = "An element '" + by.toString() + "' supposed to be present";
+            throw  new AssertionError(default_massage + " " + error_message);
+        }
     }
 }
