@@ -39,6 +39,7 @@ public class FirstTest {
     public void tearDown()
     {
         driver.quit();
+        driver.rotate(ScreenOrientation.PORTRAIT); //set portrait orientation after each test
     }
 
     @Test
@@ -377,6 +378,7 @@ public class FirstTest {
     @Test
     public void testChangeScreenOrientationOnSearhResult()
     {
+        try {
         waitForElementAndClick(
                 By.id("org.wikipedia:id/search_container"),
                 "Cannot find Search Wikipedia input"
@@ -437,6 +439,9 @@ public class FirstTest {
                 title_before_rotation,
                 title_after_second_rotation
         );
+        } finally {
+            driver.rotate(ScreenOrientation.PORTRAIT); //set portrait orientation if only this test fails
+        }
     }
 
     @Test
