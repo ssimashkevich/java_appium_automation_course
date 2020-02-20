@@ -190,8 +190,10 @@ public class FirstTest {
                 By.id("org.wikipedia:id/page_list_item_title")
         );
 
+        searchInput.toLowerCase();
+        
         for (int i=0; i<Results.size(); i++) {
-            String title = Results.get(i).getAttribute("text");
+            String title = Results.get(i).getAttribute("text").toLowerCase();
             Assert.assertTrue(
                     "Search result №" + ++i + " didn't contains '" + searchInput + "'",
                     title.contains(searchInput)
