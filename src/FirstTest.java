@@ -33,12 +33,13 @@ public class FirstTest {
         capabilities.setCapability("app","C:\\Users\\SSimashkevich\\Desktop\\java_appium_automation_course\\apks\\org.wikipedia.apk");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        
+        driver.rotate(ScreenOrientation.PORTRAIT); //set portrait orientation before each test
     }
 
     @After
     public void tearDown()
     {
-        driver.rotate(ScreenOrientation.PORTRAIT); //set portrait orientation after each test
         driver.quit();
     }
 
