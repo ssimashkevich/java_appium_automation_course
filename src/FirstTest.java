@@ -38,8 +38,8 @@ public class FirstTest {
     @After
     public void tearDown()
     {
-        driver.quit();
         driver.rotate(ScreenOrientation.PORTRAIT); //set portrait orientation after each test
+        driver.quit();
     }
 
     @Test
