@@ -190,7 +190,7 @@ public class FirstTest {
                 By.id("org.wikipedia:id/page_list_item_title")
         );
 
-        searchInput.toLowerCase();
+        searchInput = searchInput.toLowerCase();
         
         for (int i=0; i<Results.size(); i++) {
             String title = Results.get(i).getAttribute("text").toLowerCase();
