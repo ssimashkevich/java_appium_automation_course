@@ -33,6 +33,26 @@ public class SearchTests extends CoreTestCase {
     }
 
     @Test
+    public void testMultiResultSearchCancel() //Ex3
+    {
+        String search_line = "Java";
+
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine(search_line);
+        SearchPageObject.waitForSearchResultsToAppear();
+
+        assertTrue(
+                "In search only one result",
+                SearchPageObject.getAmountOfFoundArticles()>1
+        );
+
+        SearchPageObject.waitForSearchCancelButtonToAppear();
+        SearchPageObject.clickSearchCancelButton(); //click for clear search field
+        SearchPageObject.waitForSearchResultsToDisappear();
+    }
+
+    @Test
     public void testAmountOfNotEmptySearch()
     {
         String search_line = "Linkin Park discography";
@@ -46,6 +66,17 @@ public class SearchTests extends CoreTestCase {
                 "We found too few results!",
                 amount_of_search_results > 0
         );
+    }
+
+    @Test
+    public void testSearchResultsContainsSearchInput()//Ex4
+    {
+        String search_line = "Java";
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine(search_line);
+        SearchPageObject.waitForSearchResultsToAppear();
+        SearchPageObject.assertAllVisibleSearchResultTitlesContainsSearchLine(search_line);
     }
 
     @Test

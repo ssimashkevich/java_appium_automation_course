@@ -35,30 +35,44 @@ public class MainPageObject {
         return  waitForElementPresent(by, error_message, 5);
     }
 
+    private WebElement waitForElementClickable(By by, String error_message, long timeoutInSeconds)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(error_message + "\n");
+        return  wait.until(
+                ExpectedConditions.elementToBeClickable(by)
+        );
+    }
+
+    private   WebElement waitForElementClickable(By by, String error_message)
+    {
+        return  waitForElementClickable(by, error_message, 5);
+    }
+
     public WebElement waitForElementAndClick(By by, String error_message, long timeoutInSeconds)
     {
-        WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
+        WebElement element = waitForElementClickable(by, error_message, timeoutInSeconds);
         element.click();
         return element;
     }
 
     public WebElement waitForElementAndClick(By by, String error_message)
     {
-        WebElement element = waitForElementPresent(by, error_message);
+        WebElement element = waitForElementClickable(by, error_message);
         element.click();
         return element;
     }
 
     public WebElement waitForElementAndSendKeys(By by, String value, String error_message, long timeoutInSeconds)
     {
-        WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
+        WebElement element = waitForElementClickable(by, error_message, timeoutInSeconds);
         element.sendKeys(value);
         return element;
     }
 
     public WebElement waitForElementAndSendKeys(By by, String element_expected_preset_text, String value, String error_message)
     {
-        WebElement element = waitForElementPresent(by, error_message);
+        WebElement element = waitForElementClickable(by, error_message);
         String element_preset_text = element.getAttribute("text");
 
         assertEquals(
@@ -72,22 +86,30 @@ public class MainPageObject {
 
     public WebElement waitForElementAndSendKeys(By by, String value, String error_message)
     {
-        WebElement element = waitForElementPresent(by, error_message);
+        WebElement element = waitForElementClickable(by, error_message);
         element.sendKeys(value);
         return element;
     }
 
     public WebElement waitForElementAndClear(By by, String error_message, long timeoutInSeconds)
     {
-        WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
+        WebElement element = waitForElementClickable(by, error_message, timeoutInSeconds);
         element.clear();
         return element;
     }
 
     public WebElement waitForElementAndClear(By by, String error_message)
     {
-        WebElement element = waitForElementPresent(by, error_message);
+        WebElement element = waitForElementClickable(by, error_message);
         element.clear();
+        return element;
+    }
+
+    public WebElement waitForElementToClearAndSendKeys(By by, String value, String error_message)
+    {
+        WebElement element = waitForElementClickable(by, error_message);
+        element.clear();
+        element.sendKeys(value);
         return element;
     }
 
@@ -160,6 +182,12 @@ public class MainPageObject {
     public int getAmountOfElements(By by)
     {
         List elements = driver.findElements(by);
+        return elements.size();
+    }
+
+    public int getAmountOfElements(WebElement element,By by)
+    {
+        List elements = element.findElements(by);
         return elements.size();
     }
 
