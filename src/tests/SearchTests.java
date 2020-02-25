@@ -80,7 +80,7 @@ public class SearchTests extends CoreTestCase {
     }
 
     @Test
-    public void testSearchResultsCheckTitleAndDescription()
+    public void testSearchResultsCheckTitleAndDescription()//Ex9
     {
         String search_line = "Java";
 
