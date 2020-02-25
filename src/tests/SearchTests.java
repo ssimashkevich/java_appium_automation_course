@@ -80,6 +80,29 @@ public class SearchTests extends CoreTestCase {
     }
 
     @Test
+    public void testSearchResultsCheckTitleAndDescription()
+    {
+        String search_line = "Java";
+
+        String first_article_title = "Java";
+        String first_article_description = "Island of Indonesia";
+
+        String second_article_title = "Java (programming language)";
+        String second_article_description = "Object-oriented programming language";
+
+        String third_article_title = "JavaScript";
+        String third_article_description = "Programming language";
+
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine(search_line);
+        SearchPageObject.waitForSearchResultsToAppear();
+        SearchPageObject.waitForElementByTitleAndDescription(first_article_title,first_article_description);
+        SearchPageObject.waitForElementByTitleAndDescription(second_article_title,second_article_description);
+        SearchPageObject.waitForElementByTitleAndDescription(third_article_title,third_article_description);
+    }
+
+    @Test
     public void testAmountOfEmptySearch()
     {
         String search_line = "zxcdsa";
