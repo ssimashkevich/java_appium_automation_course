@@ -8,6 +8,7 @@ import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
+import java.time.Duration;
 
 public class CoreTestCase {
     protected AppiumDriver driver;
@@ -48,6 +49,6 @@ public class CoreTestCase {
 
     protected void backgroundApp(int seconds)
     {
-        driver.runAppInBackground(seconds);
+        driver.runAppInBackground(Duration.ofSeconds(seconds));
     }
 }
