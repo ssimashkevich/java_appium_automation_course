@@ -1,25 +1,26 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import lib.Platform;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class SearchPageObject extends MainPageObject {
+abstract public class SearchPageObject extends MainPageObject {
 
-    private static final String
-            SEARCH_INIT_ELEMENT = "id:org.wikipedia:id/search_container",
-            SEARCH_INPUT = "id:org.wikipedia:id/search_src_text",
-            SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn",
-            SEARCH_RESULT_LIST_ELEMENT = "id:org.wikipedia:id/search_results_list",
-            SEARCH_RESULT_ELEMENT_IN_LIST = "id:org.wikipedia:id/page_list_item_container",
-            SEARCH_RESULT_ELEMENT_TITLE = "id:org.wikipedia:id/page_list_item_title",
-            SEARCH_RESULT_ELEMENT_DESCRIPTION = "id:org.wikipedia:id/page_list_item_description",
-            SEARCH_RESULT_BY_SUBSTRING_TPL = "xpath://*[@resource-id='" + SEARCH_RESULT_LIST_ELEMENT.substring(3) + "']//*[@text='{SUBSTRING}']",
-            SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL = "xpath://*[@resource-id='" + SEARCH_RESULT_ELEMENT_IN_LIST.substring(3) + "' and .//*[@resource-id='" + SEARCH_RESULT_ELEMENT_TITLE.substring(3) + "' and @text='{TITLE}'] and .//*[@resource-id='" + SEARCH_RESULT_ELEMENT_DESCRIPTION.substring(3) + "' and @text='{DESCRIPTION}']]",
-            SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text='No results found']";
+    protected static String
+            SEARCH_INIT_ELEMENT,
+            SEARCH_INPUT,
+            SEARCH_CANCEL_BUTTON,
+            SEARCH_RESULT_LIST_ELEMENT,
+            SEARCH_RESULT_ELEMENT_IN_LIST,
+            SEARCH_RESULT_ELEMENT_TITLE,
+            SEARCH_RESULT_ELEMENT_DESCRIPTION,
+            SEARCH_RESULT_BY_SUBSTRING_TPL,
+            SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL,
+            SEARCH_EMPTY_RESULT_ELEMENT;
 
     public SearchPageObject(AppiumDriver driver)
     {
@@ -121,7 +122,13 @@ public class SearchPageObject extends MainPageObject {
     {
         search_line = search_line.toLowerCase();
 
-        String title = this.getListOfChildesInElement(element,SEARCH_RESULT_ELEMENT_TITLE).get(0).getAttribute("text").toLowerCase();
+        String title;
+
+        if (Platform.getInstance().isAndroid()) {
+            title = this.getListOfChildesInElement(element, SEARCH_RESULT_ELEMENT_TITLE).get(0).getAttribute("text").toLowerCase();
+        } else {
+            title = this.getListOfChildesInElement(element, SEARCH_RESULT_ELEMENT_TITLE).get(0).getAttribute("name").toLowerCase();
+        }
 
         assertTrue(
                     "Search result title '" + title + "' should contains '" + search_line + "'",

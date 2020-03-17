@@ -10,7 +10,8 @@ public class WelcomePageObject extends MainPageObject
             ONBOARDING_STEP_THREE = "id:Search in nearly 300 languages",
             ONBOARDING_STEP_FOUR = "id:Help make the app better",
             NEXT_BUTTON = "xpath://XCUIElementTypeButton[@name='Next']",
-            GET_STARTED_BUTTON = "xpath://XCUIElementTypeButton[@name='Get started']";
+            GET_STARTED_BUTTON = "xpath://XCUIElementTypeButton[@name='Get started']",
+            SKIP_BUTTON = "xpath:////XCUIElementTypeButton[@name='Skip']";
 
     public WelcomePageObject(AppiumDriver driver)
     {
@@ -45,5 +46,10 @@ public class WelcomePageObject extends MainPageObject
     public void clickGetStartedButton()
     {
         this.waitForElementAndClick(GET_STARTED_BUTTON,"Cannot find and click 'Get started' button");
+    }
+
+    public void clickSkip ()
+    {
+        this.waitForElementAndClick(SKIP_BUTTON,"Cannot find and click 'Skip' button");
     }
 }

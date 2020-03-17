@@ -3,6 +3,8 @@ package tests;
 import lib.CoreTestCase;
 import lib.ui.ArticlePageObject;
 import lib.ui.SearchPageObject;
+import lib.ui.factories.ArticlePageObjectFactory;
+import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,12 +17,12 @@ public class ArticleTests extends CoreTestCase {
         String search_line = "Java";
         String article_title = "Java (programming language)";
 
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.clickByArticleWithSubstring(article_title);
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.assertArticleTitle();
     }
 
@@ -30,12 +32,12 @@ public class ArticleTests extends CoreTestCase {
         String search_line = "Java";
         String article_title_on_search_page = "Java (programming language)";
 
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.clickByArticleWithSubstring(article_title_on_search_page);
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         String article_title = ArticlePageObject.getArticleTitle();
 
         assertEquals(
@@ -48,15 +50,15 @@ public class ArticleTests extends CoreTestCase {
     @Test
     public void testSwipeArticle ()
     {
-        String search_line = "Appium";
-        String article_title_on_search_page = "Appium";
+        String search_line = "Java";
+        String article_title_on_search_page = "Java (programming language)";
 
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.clickByArticleWithSubstring(article_title_on_search_page);
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         ArticlePageObject.swipeToFooter();
     }
