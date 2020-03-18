@@ -10,7 +10,7 @@ public class AndroidMyListsPageObject extends MyListsPageObject {
         ARTICLE_BY_TITLE_TPL = "xpath://*[@text='{TITLE}']";
     }
 
-    public AndroidMyListsPageObject(AppiumDriver driver)
+    public AndroidMyListsPageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

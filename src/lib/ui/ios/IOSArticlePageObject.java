@@ -12,7 +12,7 @@ public class IOSArticlePageObject extends ArticlePageObject {
         CLOSE_ARTICLE_BUTTON = "id:Back";
     }
 
-    public IOSArticlePageObject(AppiumDriver driver)
+    public IOSArticlePageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

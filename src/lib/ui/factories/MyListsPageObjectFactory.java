@@ -8,7 +8,7 @@ import lib.ui.ios.IOSMyListsPageObject;
 
 public class MyListsPageObjectFactory {
 
-    public static MyListsPageObject get(AppiumDriver driver)
+    public static MyListsPageObject get(AppiumDriver <?> driver)
     {
         if(Platform.getInstance().isAndroid()) {
             return new AndroidMyListsPageObject(driver);

@@ -22,7 +22,7 @@ abstract public class SearchPageObject extends MainPageObject {
             SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL,
             SEARCH_EMPTY_RESULT_ELEMENT;
 
-    public SearchPageObject(AppiumDriver driver)
+    public SearchPageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

@@ -9,7 +9,7 @@ public class AndroidNavigationUI extends NavigationUI {
         MY_LISTS_LINK = "xpath://android.widget.FrameLayout[@content-desc='My lists']";
     }
 
-    public AndroidNavigationUI(AppiumDriver driver)
+    public AndroidNavigationUI(AppiumDriver <?> driver)
     {
         super(driver);
     }

@@ -17,7 +17,7 @@ public class AndroidArticlePageObject extends ArticlePageObject {
         CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
     }
 
-    public AndroidArticlePageObject(AppiumDriver driver)
+    public AndroidArticlePageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

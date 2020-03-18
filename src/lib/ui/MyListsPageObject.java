@@ -10,7 +10,7 @@ abstract public class MyListsPageObject extends MainPageObject {
             FOLDER_BY_NAME_TPL,
             ARTICLE_BY_TITLE_TPL;
 
-    public MyListsPageObject (AppiumDriver driver)
+    public MyListsPageObject (AppiumDriver <?> driver)
     {
         super(driver);
     }

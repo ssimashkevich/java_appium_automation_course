@@ -24,7 +24,7 @@ abstract public class ArticlePageObject extends MainPageObject{
     }
     //TEMPLATES METHODS
 
-    public ArticlePageObject(AppiumDriver driver)
+    public ArticlePageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

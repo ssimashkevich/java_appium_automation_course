@@ -8,7 +8,7 @@ import lib.ui.ios.IOSNavigationUI;
 
 public class NavigationUIFactory {
 
-    public static NavigationUI get(AppiumDriver driver)
+    public static NavigationUI get(AppiumDriver <?> driver)
     {
         if(Platform.getInstance().isAndroid()) {
             return new AndroidNavigationUI(driver);

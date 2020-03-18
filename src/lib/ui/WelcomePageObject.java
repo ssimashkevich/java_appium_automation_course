@@ -13,7 +13,7 @@ public class WelcomePageObject extends MainPageObject
             GET_STARTED_BUTTON = "xpath://XCUIElementTypeButton[@name='Get started']",
             SKIP_BUTTON = "xpath:////XCUIElementTypeButton[@name='Skip']";
 
-    public WelcomePageObject(AppiumDriver driver)
+    public WelcomePageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

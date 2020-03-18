@@ -7,7 +7,7 @@ abstract public class NavigationUI extends MainPageObject{
     protected static String
             MY_LISTS_LINK;
 
-    public NavigationUI (AppiumDriver driver)
+    public NavigationUI (AppiumDriver <?> driver)
     {
         super(driver);
     }

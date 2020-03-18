@@ -20,9 +20,9 @@ import java.util.regex.Pattern;
 
 public class MainPageObject {
 
-    protected AppiumDriver driver;
+    protected AppiumDriver <?> driver;
 
-    public MainPageObject(AppiumDriver driver)
+    public MainPageObject(AppiumDriver <?> driver)
     {
         this.driver = driver;
     }
@@ -130,7 +130,7 @@ public class MainPageObject {
 
     public void swipeUp(int timeOfSwipe)
     {
-        TouchAction action = new TouchAction(driver);
+        TouchAction <?> action = new TouchAction <> (driver);
         Dimension size = driver.manage().window().getSize();
         int x = size.width / 2;
         int start_y = (int) (size.height * 0.8);
@@ -189,7 +189,7 @@ public class MainPageObject {
     {
         WebElement element = waitForElementPresent(locator, error_massage);
 
-        TouchAction action = new TouchAction(driver);
+        TouchAction <?> action = new TouchAction<>(driver);
 
         int left_x = element.getLocation().getX();
         int right_x = left_x + element.getSize().getWidth();
@@ -211,7 +211,7 @@ public class MainPageObject {
 
     public int getAmountOfElements(String locator)
     {
-        List<WebElement> elements = driver.findElements(getLocatorByString(locator));
+        List<?> elements = driver.findElements(getLocatorByString(locator));
         return elements.size();
     }
 
@@ -278,9 +278,8 @@ public class MainPageObject {
         int width = element.getSize().getWidth();
 
         int point_to_click_x = (right_x + width) - 3;
-        int point_to_click_y = middle_y;
 
-        TouchAction action = new TouchAction(driver);
-        action.tap(PointOption.point(point_to_click_x,point_to_click_y)).perform();
+        TouchAction<?> action = new TouchAction<>(driver);
+        action.tap(PointOption.point(point_to_click_x, middle_y)).perform();
     }
 }

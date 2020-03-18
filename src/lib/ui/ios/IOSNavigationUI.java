@@ -9,7 +9,7 @@ public class IOSNavigationUI extends NavigationUI {
         MY_LISTS_LINK = "id:Saved";
     }
 
-    public IOSNavigationUI(AppiumDriver driver)
+    public IOSNavigationUI(AppiumDriver <?> driver)
     {
         super(driver);
     }

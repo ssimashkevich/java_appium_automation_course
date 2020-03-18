@@ -18,7 +18,7 @@ public class IOSSearchPageObject extends SearchPageObject {
         SEARCH_EMPTY_RESULT_ELEMENT = "xpath://XCUIElementTypeStaticText[@name='No results found']";
     }
 
-    public IOSSearchPageObject(AppiumDriver driver)
+    public IOSSearchPageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

@@ -18,7 +18,7 @@ public class AndroidSearchPageObject extends SearchPageObject {
         SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text='No results found']";
     }
 
-    public AndroidSearchPageObject(AppiumDriver driver)
+    public AndroidSearchPageObject(AppiumDriver <?> driver)
     {
         super(driver);
     }

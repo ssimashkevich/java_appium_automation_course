@@ -51,13 +51,14 @@ public class ChangeAppConditionTests extends CoreTestCase {
     {
         String search_line = "Java";
         String article_title_on_search_page = "Java (programming language)";
+        int time_in_background = 2;
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.waitForArticleWithSubstringInSearchResult(article_title_on_search_page);
 
-        this.backgroundApp(2);
+        this.backgroundApp(time_in_background);
 
         SearchPageObject.waitForArticleWithSubstringInSearchResult(article_title_on_search_page);
     }

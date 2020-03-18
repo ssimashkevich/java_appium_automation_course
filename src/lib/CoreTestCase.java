@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class CoreTestCase {
 
-    protected AppiumDriver driver;
+    protected AppiumDriver <?> driver;
 
     @Before
     public void setUp() throws Exception

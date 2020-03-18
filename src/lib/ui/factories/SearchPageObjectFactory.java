@@ -8,7 +8,7 @@ import lib.ui.ios.IOSSearchPageObject;
 
 public class SearchPageObjectFactory {
 
-    public static SearchPageObject get(AppiumDriver driver)
+    public static SearchPageObject get(AppiumDriver <?> driver)
     {
         if(Platform.getInstance().isAndroid()) {
             return new AndroidSearchPageObject(driver);
