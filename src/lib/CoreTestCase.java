@@ -16,7 +16,6 @@ public class CoreTestCase {
     public void setUp() throws Exception
     {
         driver = Platform.getInstance().getDriver();
-        this.skipWelcomePageForIOSApp();
     }
 
     @After
@@ -40,7 +39,7 @@ public class CoreTestCase {
         driver.runAppInBackground(Duration.ofSeconds(seconds));
     }
 
-    private void skipWelcomePageForIOSApp()
+    protected void skipWelcomePageForIOSApp()
     {
         if(Platform.getInstance().isIOS()){
             WelcomePageObject WelcomePageObject = new WelcomePageObject((driver));

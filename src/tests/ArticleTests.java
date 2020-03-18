@@ -5,11 +5,18 @@ import lib.ui.ArticlePageObject;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class ArticleTests extends CoreTestCase {
+
+    @Before
+    public void skipWelcome()
+    {
+        this.skipWelcomePageForIOSApp();
+    }
 
     @Test
     public void testAssertTitle () //Ex6

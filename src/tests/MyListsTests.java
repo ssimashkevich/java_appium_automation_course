@@ -10,11 +10,18 @@ import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.MyListsPageObjectFactory;
 import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class MyListsTests extends CoreTestCase {
+
+    @Before
+    public void skipWelcome()
+    {
+        this.skipWelcomePageForIOSApp();
+    }
 
     @Test
     public void testSaveFirstArticleToMyList()

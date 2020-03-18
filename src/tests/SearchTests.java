@@ -4,11 +4,19 @@ import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class SearchTests extends CoreTestCase {
+
+    @Before
+    public void skipWelcome()
+    {
+        this.skipWelcomePageForIOSApp();
+    }
+
     @Test
     public void testSearch(){
         String search_line = "Java";
