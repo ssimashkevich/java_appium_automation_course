@@ -62,7 +62,11 @@ public class SearchTests extends CoreTestCase {
         );
 
         SearchPageObject.waitForSearchCancelButtonToAppear();
-        SearchPageObject.clickSearchCancelButton(); //click for clear search field
+        if (Platform.getInstance().isAndroid()) {
+            SearchPageObject.clickSearchCancelButton(); //click for clear search field
+        } else {
+            SearchPageObject.clickSearchClearButton();
+        }
         SearchPageObject.waitForSearchResultsToDisappear();
     }
 

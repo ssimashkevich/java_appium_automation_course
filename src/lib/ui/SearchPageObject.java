@@ -14,6 +14,7 @@ abstract public class SearchPageObject extends MainPageObject {
             SEARCH_INIT_ELEMENT,
             SEARCH_INPUT,
             SEARCH_CANCEL_BUTTON,
+            SEARCH_CLEAR_BUTTON,
             SEARCH_RESULT_LIST_ELEMENT,
             SEARCH_RESULT_ELEMENT_IN_LIST,
             SEARCH_RESULT_ELEMENT_TITLE,
@@ -60,6 +61,11 @@ abstract public class SearchPageObject extends MainPageObject {
         this.waitForElementAndClick(SEARCH_CANCEL_BUTTON, "Cannot find and click search cancel button");
     }
 
+    public void clickSearchClearButton()
+    {
+        this.waitForElementAndClick(SEARCH_CLEAR_BUTTON, "Cannot find and click search clear button");
+    }
+
     public void waitForSearchCancelButtonToDisappear()
     {
         this.waitForElementNotPresent(SEARCH_CANCEL_BUTTON, "Search cancel button is still present", 5);
@@ -77,7 +83,7 @@ abstract public class SearchPageObject extends MainPageObject {
 
     public void waitForSearchResultsToDisappear ()
     {
-        this.waitForElementNotPresent(SEARCH_RESULT_LIST_ELEMENT, "Search results still present on page", 15);
+        this.waitForElementNotPresent(SEARCH_RESULT_ELEMENT_IN_LIST, "Search results still present on page", 15);
     }
 
     public void waitForEmptyResultLabel()
