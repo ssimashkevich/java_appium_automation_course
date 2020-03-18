@@ -14,8 +14,8 @@ public class ArticleTests extends CoreTestCase {
     @Test
     public void testAssertTitle () //Ex6
     {
-        String search_line = "Java";
-        String article_title = "Java (programming language)";
+        String search_line = "Appium";
+        String article_title = "Appium";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
@@ -29,8 +29,8 @@ public class ArticleTests extends CoreTestCase {
     @Test
     public void testCompareArticleTitle ()
     {
-        String search_line = "Java";
-        String article_title_on_search_page = "Java (programming language)";
+        String search_line = "Appium";
+        String article_title_on_search_page = "Appium";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
@@ -50,8 +50,8 @@ public class ArticleTests extends CoreTestCase {
     @Test
     public void testSwipeArticle ()
     {
-        String search_line = "Java";
-        String article_title_on_search_page = "Java (programming language)";
+        String search_line = "Appium";
+        String article_title_on_search_page = "Appium";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();

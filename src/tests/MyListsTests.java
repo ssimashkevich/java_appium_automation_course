@@ -19,8 +19,8 @@ public class MyListsTests extends CoreTestCase {
     @Test
     public void testSaveFirstArticleToMyList()
     {
-        String search_line = "Java";
-        String article_title_on_search_page = "Java (programming language)";
+        String search_line = "Appium";
+        String article_title_on_search_page = "Appium";
         String name_of_my_lists_folder = "Learning programming";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -56,10 +56,10 @@ public class MyListsTests extends CoreTestCase {
     @Test
     public void testSaveTwoArticlesToMyListAndDeleteOne () //Ex5
     {
-        String search_line = "Java";
-        String first_article_title = "Java (programming language)";
-        String second_article_title = "Java";
-        String name_of_my_lists_folder = "Java folder";
+        String search_line = "Appium";
+        String first_article_title = "Appium";
+        String second_article_title = "AppImage";
+        String name_of_my_lists_folder = "Favorites folder";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
@@ -69,23 +69,42 @@ public class MyListsTests extends CoreTestCase {
 
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
-        ArticlePageObject.addArticleToMyListThenItIsNoListsYet(name_of_my_lists_folder);
+        if (Platform.getInstance().isAndroid()) {
+            ArticlePageObject.addArticleToMyListThenItIsNoListsYet(name_of_my_lists_folder);
+        } else {
+            ArticlePageObject.addArticleToMySaved();
+        }
         ArticlePageObject.closeArticle();
 
-        SearchPageObject.initSearchInput();
-        SearchPageObject.typeSearchLine(search_line);
+        if (Platform.getInstance().isAndroid()) {
+            SearchPageObject.initSearchInput();
+            SearchPageObject.typeSearchLine(search_line);
+        }
+
         SearchPageObject.waitForSearchResultsToAppear();
         SearchPageObject.clickByArticleWithSubstring(second_article_title);
 
         ArticlePageObject.waitForTitleElement();
-        ArticlePageObject.addArticleToExistMyList(name_of_my_lists_folder);
+        if (Platform.getInstance().isAndroid()) {
+            ArticlePageObject.addArticleToExistMyList(name_of_my_lists_folder);
+        } else {
+            ArticlePageObject.addArticleToMySaved();
+        }
         ArticlePageObject.closeArticle();
+
+        if (Platform.getInstance().isIOS()) {
+            SearchPageObject.clickSearchCancelButton();
+        }
 
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.clickMyLists();
 
         MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
-        MyListsPageObject.openMyListsFolderByName(name_of_my_lists_folder);
+        if (Platform.getInstance().isAndroid()) {
+            MyListsPageObject.openMyListsFolderByName(name_of_my_lists_folder);
+        } else {
+            MyListsPageObject.closeSinkPromo();
+        }
         MyListsPageObject.swipeByArticleToDelete(first_article_title);
         MyListsPageObject.waitForArticleToAppearByTitle(second_article_title);
         MyListsPageObject.clickByArticleWithTitle(second_article_title);

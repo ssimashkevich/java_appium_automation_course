@@ -14,8 +14,8 @@ public class ChangeAppConditionTests extends CoreTestCase {
     public void testChangeScreenOrientationOnSearchResult()
     {
 
-        String search_line = "Java";
-        String article_title_on_search_page = "Java (programming language)";
+        String search_line = "Appium";
+        String article_title_on_search_page = "Appium";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
