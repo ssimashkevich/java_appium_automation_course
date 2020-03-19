@@ -52,7 +52,7 @@ public class Platform {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("deviceName","emulator-5554");
+        capabilities.setCapability("deviceName","Android_8_0");
         capabilities.setCapability("platformVersion","8.0");
         capabilities.setCapability("automationName","Appium");
         capabilities.setCapability("appPackage","org.wikipedia");
