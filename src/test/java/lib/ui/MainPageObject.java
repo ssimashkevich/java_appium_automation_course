@@ -189,7 +189,7 @@ public class MainPageObject {
     {
         WebElement element = waitForElementPresent(locator, error_massage);
 
-        TouchAction <?> action = new TouchAction<>(driver);
+        TouchAction <?> action = new TouchAction <> (driver);
 
         int left_x = element.getLocation().getX();
         int right_x = left_x + element.getSize().getWidth();

@@ -29,9 +29,9 @@ public class Platform {
     {
         URL URL = new URL(APPIUM_URL);
         if(this.isAndroid()){
-            return new AndroidDriver<>(URL, this.getAndroidDesiredCapabilities());
+            return new AndroidDriver <> (URL, this.getAndroidDesiredCapabilities());
         } else if(this.isIOS()){
-            return new IOSDriver<>(URL, this.getIOSDesiredCapabilities());
+            return new IOSDriver <> (URL, this.getIOSDesiredCapabilities());
         } else {
             throw new Exception("Cannot detect type of the Driver from env variable. Platform value " + this.getPlatformVar());
         }
