@@ -1,8 +1,8 @@
 package lib.ui;
 
-import io.appium.java_client.AppiumDriver;
 import lib.Platform;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ abstract public class SearchPageObject extends MainPageObject {
             SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL,
             SEARCH_EMPTY_RESULT_ELEMENT;
 
-    public SearchPageObject(AppiumDriver <?> driver)
+    public SearchPageObject(RemoteWebDriver driver)
     {
         super(driver);
     }
@@ -73,7 +73,7 @@ abstract public class SearchPageObject extends MainPageObject {
 
     public void waitForSearchResultsToAppear ()
     {
-        this.waitForElementPresent(SEARCH_RESULT_LIST_ELEMENT, "Cannot find search results by the request", 15);
+        this.waitForElementPresent(SEARCH_RESULT_ELEMENT_IN_LIST, "Cannot find search results by the request", 15);
     }
 
     private WebElement getSearchResultsListElement()
@@ -98,10 +98,8 @@ abstract public class SearchPageObject extends MainPageObject {
 
     public int getAmountOfFoundArticles()
     {
-        WebElement search_results_list = this.getSearchResultsListElement();
-
+        this.waitForSearchResultsToAppear();
         return this.getAmountOfElements(
-                search_results_list,
                 SEARCH_RESULT_ELEMENT_IN_LIST
         );
     }
@@ -132,8 +130,10 @@ abstract public class SearchPageObject extends MainPageObject {
 
         if (Platform.getInstance().isAndroid()) {
             title = this.getListOfChildesInElement(element, SEARCH_RESULT_ELEMENT_TITLE).get(0).getAttribute("text").toLowerCase();
-        } else {
+        } else if (Platform.getInstance().isIOS()){
             title = this.getListOfChildesInElement(element, SEARCH_RESULT_ELEMENT_TITLE).get(0).getAttribute("name").toLowerCase();
+        } else {
+            title = this.getListOfChildesInElement(element, SEARCH_RESULT_ELEMENT_TITLE).get(0).getAttribute("data-title").toLowerCase();
         }
 
         assertTrue(

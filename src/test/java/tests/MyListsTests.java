@@ -2,10 +2,7 @@ package tests;
 
 import lib.CoreTestCase;
 import lib.Platform;
-import lib.ui.ArticlePageObject;
-import lib.ui.MyListsPageObject;
-import lib.ui.NavigationUI;
-import lib.ui.SearchPageObject;
+import lib.ui.*;
 import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.MyListsPageObjectFactory;
 import lib.ui.factories.NavigationUIFactory;
@@ -13,9 +10,15 @@ import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
 
 public class MyListsTests extends CoreTestCase {
+
+    private static final String
+            login = "AppiumTest",
+            password = "passwordAppium";
 
     @Before
     public void skipWelcome()
@@ -24,7 +27,7 @@ public class MyListsTests extends CoreTestCase {
     }
 
     @Test
-    public void testSaveFirstArticleToMyList()
+    public void testSaveFirstArticleToMyList() throws Exception
     {
         String search_line = "Appium";
         String article_title_on_search_page = "Appium";
@@ -42,6 +45,16 @@ public class MyListsTests extends CoreTestCase {
         } else {
             ArticlePageObject.addArticleToMySaved();
         }
+
+        if (Platform.getInstance().isMW()){
+            AutorizationPageObject AutorizationPageObject = new AutorizationPageObject(driver);
+            AutorizationPageObject.clickAuthButton();
+            AutorizationPageObject.enterLoginData(login,password);
+            AutorizationPageObject.submitForm();
+            ArticlePageObject.waitForTitleElement();
+            ArticlePageObject.addArticleToMySaved();
+        }
+
         ArticlePageObject.closeArticle();
 
         if (Platform.getInstance().isIOS()) {
@@ -49,19 +62,22 @@ public class MyListsTests extends CoreTestCase {
         }
 
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
+        if (Platform.getInstance().isMW()){
+            NavigationUI.openNavigation();
+        }
         NavigationUI.clickMyLists();
 
         MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
         if (Platform.getInstance().isAndroid()) {
             MyListsPageObject.openMyListsFolderByName(name_of_my_lists_folder);
-        } else {
+        } else if (Platform.getInstance().isIOS()){
             MyListsPageObject.closeSinkPromo();
         }
         MyListsPageObject.swipeByArticleToDelete(article_title_on_search_page);
     }
 
     @Test
-    public void testSaveTwoArticlesToMyListAndDeleteOne () //Ex5
+    public void testSaveTwoArticlesToMyListAndDeleteOne () throws Exception //Ex5
     {
         String search_line = "Appium";
         String first_article_title = "Appium";

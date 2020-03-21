@@ -1,6 +1,7 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.ArticlePageObject;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.ArticlePageObjectFactory;
@@ -21,6 +22,9 @@ public class ChangeAppConditionTests extends CoreTestCase {
     @Test
     public void testChangeScreenOrientationOnSearchResult()
     {
+        if (Platform.getInstance().isMW()){
+            return;
+        }
 
         String search_line = "Appium";
         String article_title_on_search_page = "Appium";
@@ -57,6 +61,9 @@ public class ChangeAppConditionTests extends CoreTestCase {
     @Test
     public void testCheckSearchArticleInBackground()
     {
+        if (Platform.getInstance().isMW()){
+            return;
+        }
         String search_line = "Java";
         String article_title_on_search_page = "Java (programming language)";
         int time_in_background = 2;
