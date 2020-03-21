@@ -110,6 +110,10 @@ public class SearchTests extends CoreTestCase {
 
         String third_article_title = "JavaScript";
         String third_article_description = "Programming language";
+        if (Platform.getInstance().isMW()){
+            first_article_description = "island of Indonesia";
+            third_article_description = "programming language";
+        }
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();

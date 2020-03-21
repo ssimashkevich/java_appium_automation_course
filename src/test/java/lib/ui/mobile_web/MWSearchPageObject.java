@@ -15,7 +15,7 @@ public class MWSearchPageObject extends SearchPageObject {
         SEARCH_RESULT_ELEMENT_TITLE = "css:a.title";
         SEARCH_RESULT_ELEMENT_DESCRIPTION = "css:div.wikidata-description";
         SEARCH_RESULT_BY_SUBSTRING_TPL = "xpath://*[contains(@class,'page-summary')]//*[contains(text(),'{SUBSTRING}') or contains(@data-title,'{SUBSTRING}')]";
-        SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL = "";
+        SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL = "xpath://*[contains(@class,'page-summary') and .//*[contains(text(),'{DESCRIPTION}') and @class='wikidata-description'] and .//*[contains(@data-title,'{TITLE}')]]";
         SEARCH_EMPTY_RESULT_ELEMENT = "css:p.without-results";
     }
 
