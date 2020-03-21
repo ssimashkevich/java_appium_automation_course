@@ -97,9 +97,19 @@ public class MyListsTests extends CoreTestCase {
         } else {
             ArticlePageObject.addArticleToMySaved();
         }
+
+        if (Platform.getInstance().isMW()){
+            AutorizationPageObject AutorizationPageObject = new AutorizationPageObject(driver);
+            AutorizationPageObject.clickAuthButton();
+            AutorizationPageObject.enterLoginData(login,password);
+            AutorizationPageObject.submitForm();
+            ArticlePageObject.waitForTitleElement();
+            ArticlePageObject.addArticleToMySaved();
+        }
+
         ArticlePageObject.closeArticle();
 
-        if (Platform.getInstance().isAndroid()) {
+        if (Platform.getInstance().isAndroid() || Platform.getInstance().isMW()) {
             SearchPageObject.initSearchInput();
             SearchPageObject.typeSearchLine(search_line);
         }
@@ -120,12 +130,15 @@ public class MyListsTests extends CoreTestCase {
         }
 
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
+        if (Platform.getInstance().isMW()){
+            NavigationUI.openNavigation();
+        }
         NavigationUI.clickMyLists();
 
         MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
         if (Platform.getInstance().isAndroid()) {
             MyListsPageObject.openMyListsFolderByName(name_of_my_lists_folder);
-        } else {
+        } else if (Platform.getInstance().isIOS()){
             MyListsPageObject.closeSinkPromo();
         }
         MyListsPageObject.swipeByArticleToDelete(first_article_title);
